@@ -34,6 +34,8 @@ const Player = () => {
     //add marks to spots on the board
 };
 
+const player1 = Player();
+const player2 = Player();
 
 // button to start/restart
 let reset = document.getElementById('reset');
