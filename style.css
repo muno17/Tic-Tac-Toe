@@ -46,7 +46,10 @@ button {
     border-color: #BC81BF;
     background-color: #DBDBDB;
     box-shadow: 3px 3px 10px black;
-    gap: 1rem;
+}
+
+.tile {
+    border: .2rem solid #BC81BF;
 }
 
 #footer {
