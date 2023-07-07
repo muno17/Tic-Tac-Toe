@@ -12,7 +12,7 @@ const Gameboard = (() => {
     }
 
     const reset = () => {
-        console.log("reset");
+        console.log("reseting");
         for (let i = 0; i < 9; i++) {
             board[i].innerHTML = "";
         }
@@ -39,7 +39,7 @@ const Player = () => {
 let reset = document.getElementById('reset');
 reset.addEventListener('click', () => {
     console.log('reset clicked');
-    Gameboard.reset;
+    Gameboard.reset();
 })
 
 // create a computer player
