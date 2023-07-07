@@ -21,6 +21,11 @@ body {
     width: 100%;
 }
 
+h1 {
+    font-size: 4rem;
+    text-shadow: 3px 3px 10px black;
+}
+
 button {
     border-radius: .5em;
     height: 4rem;
