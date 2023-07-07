@@ -15,9 +15,9 @@ body {
 #top {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    height: 100%;
+    height: 50%;
     width: 100%;
 }
 
@@ -38,10 +38,17 @@ button {
     justify-content: space-between;
 }
 
+#middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
 #board {
     display: grid;
-    grid-template-columns: 8rem 8rem 8rem;
-    grid-template-rows: 8rem 8rem 8rem;
+    grid-template-columns: 10rem 10rem 10rem;
+    grid-template-rows: 10rem 10rem 10rem;
     border-style: solid;
     border-color: #BC81BF;
     background-color: #DBDBDB;
@@ -53,12 +60,12 @@ button {
     border: .2rem solid #BC81BF;
     justify-content: center;
     align-items: center;
-    font-size: 6rem;
+    font-size: 8rem;
     text-shadow: 3px 3px 10px black;
 }
 
 #footer {
-    height: 8%;
+    height: 2%;
     width: 100%;
     background-color: #BC81BF;
     text-align: center;
