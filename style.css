@@ -43,6 +43,12 @@ button {
     justify-content: space-between;
 }
 
+#gameDisplay {
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-shadow: 3px 3px 10px black;
+}
+
 #middle {
     display: flex;
     flex-direction: column;

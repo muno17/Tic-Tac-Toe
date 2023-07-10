@@ -5,16 +5,16 @@ const Gameboard = (() => {
     for (let i = 0; i < 9; i++) {
         board[i].addEventListener('click', () => {
             if (board[i] != 'X' || board[i] != 'O') {
-                board[i].innerHTML = "X";
+                board[i].innerHTML = 'X';
             }
             
         })
     }
 
     const reset = () => {
-        console.log("reseting");
+        console.log('reseting');
         for (let i = 0; i < 9; i++) {
-            board[i].innerHTML = "";
+            board[i].innerHTML = '';
         }
     };
 
@@ -23,10 +23,23 @@ const Gameboard = (() => {
 })();
 
 const Flow = (() => {
+    // display
+    let display = document.getElementById("gameDisplay");
+
+    let start = document.getElementById("start");
+    start.addEventListener("click", () => {
+        display.innerHTML = "Player 1's Turn";
+    });
+
+    let reset = document.getElementById("reset");
+    reset.addEventListener("click", () => {
+        console.log("reset clicked");
+        Gameboard.reset();
+        display.innerHTML = "";
+    });
 
     // check when game is over
     // congratulate winning player
-
 })();
 
 
@@ -37,11 +50,6 @@ const Player = () => {
 const player1 = Player();
 const player2 = Player();
 
-// button to start/restart
-let reset = document.getElementById('reset');
-reset.addEventListener('click', () => {
-    console.log('reset clicked');
-    Gameboard.reset();
-})
 
-// create a computer player
+
+// create a computer player?
