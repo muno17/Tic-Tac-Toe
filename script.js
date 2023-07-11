@@ -6,6 +6,7 @@ const Gameboard = (() => {
         board[i].addEventListener('click', () => {
             if (board[i] != 'X' || board[i] != 'O') {
                 board[i].innerHTML = 'X';
+                Flow.nextTurn();
             }
             
         })
@@ -25,10 +26,12 @@ const Gameboard = (() => {
 const Flow = (() => {
     // display
     let display = document.getElementById("gameDisplay");
+    let turn;
 
     let start = document.getElementById("start");
     start.addEventListener("click", () => {
         display.innerHTML = "Player 1's Turn";
+        this.turn = 1;
     });
 
     let reset = document.getElementById("reset");
@@ -38,17 +41,34 @@ const Flow = (() => {
         display.innerHTML = "";
     });
 
+    const nextTurn = () => {
+        if (this.turn == 1 ) {
+            this.turn = 2; 
+        } else {
+            this.turn = 1;
+        }
+        display.innerHTML = `Player ${this.turn}\'s Turn`;
+    };
+
     // check when game is over
     // congratulate winning player
+    return {nextTurn};
 })();
 
 
-const Player = () => {
+const Player = (mark) => {
+    let playerMark = mark;
+
+    const addMark = (playerMark) => {
+        
+    }
+
+    
     //add marks to spots on the board
 };
 
-const player1 = Player();
-const player2 = Player();
+const player1 = Player('X');
+const player2 = Player('O');
 
 
 
