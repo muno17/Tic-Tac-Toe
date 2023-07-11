@@ -11,7 +11,6 @@ const Gameboard = (() => {
                     Flow.nextTurn();
                 }
             }
-            
         })
     }
 
@@ -19,6 +18,7 @@ const Gameboard = (() => {
         console.log('reseting');
         for (let i = 0; i < 9; i++) {
             board[i].innerHTML = '';
+            Flow.endGame();
         }
     };
 
@@ -59,21 +59,18 @@ const Flow = (() => {
         return gameStart;
     };
 
+    const endGame = () => {
+        gameStart = false;
+    }
+
     // check when game is over
     // congratulate winning player
-    return {nextTurn, startGame};
+    return {nextTurn, startGame, endGame};
 })();
 
 
 const Player = (mark) => {
-    let playerMark = mark;
-
-    const addMark = (playerMark) => {
-        
-    }
-
-    
-    //add marks to spots on the board
+    return mark;
 };
 
 const player1 = Player('X');
