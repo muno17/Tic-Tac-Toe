@@ -7,7 +7,11 @@ const Gameboard = (() => {
         board[i].addEventListener('click', () => {
             if (Flow.startGame()) {
                 if (board[i].innerHTML != 'X' && board[i].innerHTML != 'O') {
-                    board[i].innerHTML = 'X';
+                    if (Flow.playerTurn() == 1){
+                        board[i].innerHTML = "X";
+                    } else {
+                        board[i].innerHTML = "O";
+                    }
                     Flow.nextTurn();
                 }
             }
@@ -63,9 +67,13 @@ const Flow = (() => {
         gameStart = false;
     }
 
+    const playerTurn = () => {
+        return this.turn;
+    }
+
     // check when game is over
     // congratulate winning player
-    return {nextTurn, startGame, endGame};
+    return {nextTurn, startGame, endGame, playerTurn};
 })();
 
 
