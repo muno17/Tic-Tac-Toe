@@ -8,9 +8,9 @@ const Gameboard = (() => {
             if (Flow.startGame()) {
                 if (board[i].innerHTML != 'X' && board[i].innerHTML != 'O') {
                     if (Flow.playerTurn() == 1){
-                        board[i].innerHTML = "X";
+                        board[i].innerHTML = player1.playerMark();
                     } else {
-                        board[i].innerHTML = "O";
+                        board[i].innerHTML = player2.playerMark();
                     }
                     Flow.nextTurn();
                 }
@@ -65,20 +65,38 @@ const Flow = (() => {
 
     const endGame = () => {
         gameStart = false;
-    }
+    };
 
     const playerTurn = () => {
         return this.turn;
-    }
+    };
 
     // check when game is over
+    const win = (arr) => {
+        let length = arr.length;
+        for (let i = 0; i < length; i++) {
+
+        }
+    };
     // congratulate winning player
+
+
+
     return {nextTurn, startGame, endGame, playerTurn};
 })();
 
 
 const Player = (mark) => {
-    return mark;
+    let pMark = mark;
+    let playerArr = [];
+
+    const playerMark = () => {
+        return pMark;
+    };
+
+
+
+    return {playerMark, playerArr};
 };
 
 const player1 = Player('X');
