@@ -4,7 +4,7 @@ const Gameboard = (() => {
     console.log(board);
     for (let i = 0; i < 9; i++) {
         board[i].addEventListener('click', () => {
-            if (board[i] != 'X' || board[i] != 'O') {
+            if (board[i].innerHTML != 'X' && board[i].innerHTML != 'O') {
                 board[i].innerHTML = 'X';
                 Flow.nextTurn();
             }
