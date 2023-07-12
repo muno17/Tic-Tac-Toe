@@ -12,6 +12,9 @@ const Gameboard = (() => {
                     } else {
                         board[i].innerHTML = player2.playerMark();
                     }
+                    if (Flow.turnNumber() >= 4) {
+                        // check logic for winner
+                    }
                     Flow.nextTurn();
                 }
             }
@@ -35,6 +38,7 @@ const Flow = (() => {
     let display = document.getElementById("gameDisplay");
     let turn;
     let gameStart = false;
+    let turnCount = 1;
 
     let start = document.getElementById("start");
     start.addEventListener("click", () => {
@@ -57,6 +61,7 @@ const Flow = (() => {
             this.turn = 1;
         }
         display.innerHTML = `Player ${this.turn}\'s Turn`;
+        turnCount++;
     };
 
     const startGame = () => {
@@ -71,6 +76,10 @@ const Flow = (() => {
         return this.turn;
     };
 
+    const turnNumber = () => {
+        return this.turnCount;
+    }
+
     // check when game is over
     const win = (arr) => {
         let length = arr.length;
@@ -82,7 +91,7 @@ const Flow = (() => {
 
 
 
-    return {nextTurn, startGame, endGame, playerTurn};
+    return {nextTurn, startGame, endGame, playerTurn, turnNumber};
 })();
 
 
