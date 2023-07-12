@@ -14,9 +14,6 @@ const Gameboard = (() => {
                         board[i].innerHTML = player2.playerMark();
                         player2.addTile(i);
                     }
-                    if (Flow.turnNumber() >= 4) {
-                        // check logic for winner
-                    }
                     Flow.nextTurn();
                 }
             }
@@ -27,8 +24,6 @@ const Gameboard = (() => {
         for (let i = 0; i < 9; i++) {
             board[i].innerHTML = '';
         }
-        player1.tileClearer();
-        player2.tileClearer();
         Flow.endGame();
     };
 
@@ -63,7 +58,18 @@ const Flow = (() => {
             this.turn = 1;
         }
         display.innerHTML = `Player ${this.turn}\'s Turn`;
-        turnCount++;
+        if (turnCount >= 4) {
+            // check logic for winner
+            if (winCheck(player1.tileProvider())) {
+                display.innerHTML = "Player 1 Wins!!!";
+                endGame();
+            } else if (winCheck(player2.tileProvider())) {
+                display.innerHTML = "Player 2 Wins!!!";
+                endGame();
+            }
+        } else {
+            turnCount++;
+        }
     };
 
     const startGame = () => {
@@ -72,6 +78,8 @@ const Flow = (() => {
 
     const endGame = () => {
         gameStart = false;
+        player1.tileClearer();
+        player2.tileClearer();
     };
 
     const playerTurn = () => {
@@ -84,56 +92,54 @@ const Flow = (() => {
 
     // check when game is over
     const winCheck = (arr) => {
-        let win = false;
 
         if (arr.includes(0)) {
             if (arr.includes(1)) {
                 if (arr.includes(2)) {
-                    win = true;
-                    return win;
-                }
-            } else if (arr.includes(4)) {
-                if (arr.includes(8)) {
-                    win = true;
-                    return win;
-                }
-            } else if (arr.includes(3)) {
-                if (arr.includes(6)) {
-                    win = true;
-                    return win;
+                    return true;
                 }
             }
-        } else if (arr.includes(1)) {
+            if (arr.includes(4)) {
+                if (arr.includes(8)) {
+                    return true;
+                }
+            } 
+            if (arr.includes(3)) {
+                if (arr.includes(6)) {
+                    return true;
+                }
+            }
+        }
+        if (arr.includes(1)) {
             if (arr.includes(4)) {
                 if (arr.includes(7)) {
-                    win = true;
-                    return win;
+                    return true;
                 }
             }
-        } else if (arr.includes(2)) {
+        } 
+        if (arr.includes(2)) {
             if (arr.includes(5)) {
                 if (arr.includes(8)) {
-                    win = true;
-                    return win;
+                    return true;
                 }
-            } else if (arr.includes(4)) {
+            } 
+            if (arr.includes(4)) {
                 if (arr.includes(6)) {
-                    win = true;
-                    return win;
+                    return true;
                 }
             }
-        } else if (arr.includes(3)) {
+        }
+        if (arr.includes(3)) {
             if (arr.includes(4)) {
                 if (arr.includes(5)) {
-                    win = true;
-                    return win;
+                    return true;
                 }
             }
-        } else if (arr.includes(6)) {
+        }
+        if (arr.includes(6)) {
             if (arr.includes(7)) {
                 if (arr.includes(8)) {
-                    win = true;
-                    return win;
+                    return true;
                 }
             }
         }
