@@ -9,8 +9,10 @@ const Gameboard = (() => {
                 if (board[i].innerHTML != 'X' && board[i].innerHTML != 'O') {
                     if (Flow.playerTurn() == 1){
                         board[i].innerHTML = player1.playerMark();
+                        player1.addTile(i);
                     } else {
                         board[i].innerHTML = player2.playerMark();
+                        player2.addTile(i);
                     }
                     if (Flow.turnNumber() >= 4) {
                         // check logic for winner
@@ -22,11 +24,12 @@ const Gameboard = (() => {
     }
 
     const reset = () => {
-        console.log('reseting');
         for (let i = 0; i < 9; i++) {
             board[i].innerHTML = '';
-            Flow.endGame();
         }
+        player1.tileClearer();
+        player2.tileClearer();
+        Flow.endGame();
     };
 
     return {reset};
@@ -49,7 +52,6 @@ const Flow = (() => {
 
     let reset = document.getElementById("reset");
     reset.addEventListener("click", () => {
-        console.log("reset clicked");
         Gameboard.reset();
         display.innerHTML = "";
     });
@@ -103,9 +105,20 @@ const Player = (mark) => {
         return pMark;
     };
 
+    const addTile = (x) => {
+        playerArr.push(x);
+    }
+
+    const tileProvider = () => {
+        return playerArr;
+    }
+
+    const tileClearer = () => {
+        playerArr = [];
+    }
 
 
-    return {playerMark, playerArr};
+    return {playerMark, addTile, tileProvider, tileClearer};
 };
 
 const player1 = Player('X');
