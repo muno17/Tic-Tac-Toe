@@ -67,9 +67,14 @@ const Flow = (() => {
                 display.innerHTML = "Player 2 Wins!!!";
                 endGame();
             }
-        } else {
-            turnCount++;
         }
+
+        turnCount++;
+        if (turnCount == 10) {
+            display.innerHTML = "Tie Game!!!"
+            endGame();
+        } 
+        
     };
 
     const startGame = () => {
