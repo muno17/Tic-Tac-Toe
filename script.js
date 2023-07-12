@@ -43,12 +43,14 @@ const Flow = (() => {
         display.innerHTML = "Player 1's Turn";
         this.turn = 1;
         gameStart = true;
+        start.disabled = true;
     });
 
     let reset = document.getElementById("reset");
     reset.addEventListener("click", () => {
         Gameboard.reset();
         display.innerHTML = "";
+        start.disabled = false;
     });
 
     const nextTurn = () => {
