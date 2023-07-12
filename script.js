@@ -1,7 +1,6 @@
 const Gameboard = (() => {
     // create array of tiles
     let board = document.getElementsByClassName('tile');
-    console.log(board);
 
     for (let i = 0; i < 9; i++) {
         board[i].addEventListener('click', () => {
@@ -87,6 +86,7 @@ const Flow = (() => {
         gameStart = false;
         player1.tileClearer();
         player2.tileClearer();
+        turnCount = 1;
     };
 
     const playerTurn = () => {
@@ -99,7 +99,6 @@ const Flow = (() => {
 
     // check when game is over
     const winCheck = (arr) => {
-
         if (arr.includes(0)) {
             if (arr.includes(1)) {
                 if (arr.includes(2)) {
@@ -152,9 +151,6 @@ const Flow = (() => {
         }
 
     };
-    // congratulate winning player
-
-
 
     return {nextTurn, startGame, endGame, playerTurn, turnNumber, winCheck};
 })();
@@ -179,7 +175,6 @@ const Player = (mark) => {
     const tileClearer = () => {
         playerArr = [];
     }
-
 
     return {playerMark, addTile, tileProvider, tileClearer};
 };
