@@ -83,17 +83,67 @@ const Flow = (() => {
     }
 
     // check when game is over
-    const win = (arr) => {
-        let length = arr.length;
-        for (let i = 0; i < length; i++) {
+    const winCheck = (arr) => {
+        let win = false;
 
+        if (arr.includes(0)) {
+            if (arr.includes(1)) {
+                if (arr.includes(2)) {
+                    win = true;
+                    return win;
+                }
+            } else if (arr.includes(4)) {
+                if (arr.includes(8)) {
+                    win = true;
+                    return win;
+                }
+            } else if (arr.includes(3)) {
+                if (arr.includes(6)) {
+                    win = true;
+                    return win;
+                }
+            }
+        } else if (arr.includes(1)) {
+            if (arr.includes(4)) {
+                if (arr.includes(7)) {
+                    win = true;
+                    return win;
+                }
+            }
+        } else if (arr.includes(2)) {
+            if (arr.includes(5)) {
+                if (arr.includes(8)) {
+                    win = true;
+                    return win;
+                }
+            } else if (arr.includes(4)) {
+                if (arr.includes(6)) {
+                    win = true;
+                    return win;
+                }
+            }
+        } else if (arr.includes(3)) {
+            if (arr.includes(4)) {
+                if (arr.includes(5)) {
+                    win = true;
+                    return win;
+                }
+            }
+        } else if (arr.includes(6)) {
+            if (arr.includes(7)) {
+                if (arr.includes(8)) {
+                    win = true;
+                    return win;
+                }
+            }
         }
+
     };
     // congratulate winning player
 
 
 
-    return {nextTurn, startGame, endGame, playerTurn, turnNumber};
+    return {nextTurn, startGame, endGame, playerTurn, turnNumber, winCheck};
 })();
 
 
